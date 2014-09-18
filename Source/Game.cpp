@@ -21,7 +21,7 @@ CGame::CGame(){
 	
 	SDL_Flip(screen);
 
-	estado = 0;
+	estado = Estado::ESTADO_INICIANDO;
 }
 
 // Con esta función eliminaremos todos los elementos en pantalla
@@ -34,14 +34,17 @@ bool CGame::Start()
 	int salirJuego = false;
           
 	while (salirJuego == false){
-            
 		//Maquina de estados
 		switch(estado){
-			case 0: //INICIALIZAR
+		case Estado::ESTADO_INICIANDO:
 			break;
-			case 1:	//JUGAR	
+		case Estado::ESTADO_MENU:
 			break;
-			case 2: //SALIR
+		case Estado::ESTADO_JUGANDO:
+			break;
+		case Estado::ESTADO_TERMINANDO:
+			break;
+		case Estado::ESTADO_FINALIZANDO:
 				salirJuego = true;
 			break;
 		};
