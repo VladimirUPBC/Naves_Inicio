@@ -4,8 +4,17 @@
 #include <SDL.h>
 
 CGame::CGame(){
-	SDL_Surface *screen;
-	
+	estado = Estado::ESTADO_INICIANDO;
+	atexit(SDL_Quit);
+}
+
+// Con esta función eliminaremos todos los elementos en pantalla
+void CGame::Finalize(){
+	SDL_Quit();
+}
+
+// Con esta función se iniciara, lo necesario para jugar (Audio, Video, Etc.)
+void CGame::Iniciando(){
 	if (SDL_Init( SDL_INIT_VIDEO )){
 		printf("Error %s ", SDL_GetError());
 		exit(EXIT_FAILURE);
@@ -18,14 +27,6 @@ CGame::CGame(){
 	}
 
 	SDL_WM_SetCaption( "Mi primer Juego", NULL );
-	
-	SDL_Flip(screen);
-
-	estado = Estado::ESTADO_INICIANDO;
-}
-
-// Con esta función eliminaremos todos los elementos en pantalla
-void CGame::Finalize(){
 }
 
 bool CGame::Start()
@@ -34,9 +35,12 @@ bool CGame::Start()
 	int salirJuego = false;
           
 	while (salirJuego == false){
+
 		//Maquina de estados
 		switch(estado){
 		case Estado::ESTADO_INICIANDO:
+			Iniciando();
+			estado = Estado::ESTADO_MENU;
 			break;
 		case Estado::ESTADO_MENU:
 			break;
@@ -45,9 +49,13 @@ bool CGame::Start()
 		case Estado::ESTADO_TERMINANDO:
 			break;
 		case Estado::ESTADO_FINALIZANDO:
-				salirJuego = true;
+			salirJuego = true;
+			Finalize();
 			break;
 		};
+
+		SDL_Flip(screen);
+
     }
 	return true;
 }
