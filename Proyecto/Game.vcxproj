@@ -69,9 +69,30 @@
   <ItemGroup>
     <ClCompile Include="..\Source\main.cpp" />
     <ClCompile Include="..\Source\Game.cpp" />
+    <ClCompile Include="..\Source\Nave.cpp" />
+    <ClCompile Include="..\Source\Objeto.cpp" />
+    <ClCompile Include="..\Source\CodigoOculto.cpp" />
+    <ClCompile Include="..\Source\Sprite.cpp" />
+    <ClCompile Include="..\Source\SpriteDef.cpp" />
+    <ClCompile Include="..\Source\Stage.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Source\CodigoOculto.h" />
+    <ClInclude Include="..\Source\Config.h" />
     <ClInclude Include="..\Source\Game.h" />
+    <ClInclude Include="..\Source\Nave.h" />
+    <ClInclude Include="..\Source\Objeto.h" />
+    <ClInclude Include="..\Source\Sprite.h" />
+    <ClInclude Include="..\Source\SpriteDef.h" />
+    <ClInclude Include="..\Source\Stage.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Data\cuadro.jpg" />
+    <None Include="..\Data\dados.png" />
+    <None Include="..\Data\MiNave.bmp" />
+    <None Include="..\Data\tools.jpg" />
+    <None Include="..\Data\umi.jpg" />
+    <None Include="..\Ejecutable\Readme.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
